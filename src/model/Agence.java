@@ -37,4 +37,8 @@ public class Agence {
 
     public Agence() {}
 
+    public Agence(BackLog b) {
+        this.backlog = b;
+    }
+
 }
