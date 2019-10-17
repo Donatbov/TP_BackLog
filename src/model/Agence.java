@@ -7,6 +7,15 @@ public class Agence {
     @Id @GeneratedValue
     private long id;
     private String name;
+    @OneToOne
+    private BackLog backlog;
+
+    public Agence() {}
+
+    public Agence(String name, BackLog b) {
+        this.name = name;
+        this.backlog = b;
+    }
 
     public long getId() {
         return id;
@@ -30,15 +39,6 @@ public class Agence {
 
     public void setBacklog(BackLog backlog) {
         this.backlog = backlog;
-    }
-
-    @OneToOne
-    private BackLog backlog;
-
-    public Agence() {}
-
-    public Agence(BackLog b) {
-        this.backlog = b;
     }
 
 }

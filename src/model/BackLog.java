@@ -7,11 +7,14 @@ import java.util.List;
 public class BackLog {
     @Id @GeneratedValue
     private long id;
-
     @OneToMany
     private List<Entree> listeEntree;
 
     public BackLog() {}
+
+    public BackLog(List<Entree> listeEntree) {
+        this.listeEntree = listeEntree;
+    }
 
     public long getId() {
         return id;

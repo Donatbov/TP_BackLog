@@ -2,6 +2,7 @@ package ejb;
 
 import model.Agence;
 import model.BackLog;
+import utils.Utils;
 
 import javax.annotation.sql.DataSourceDefinition;
 import javax.ejb.LocalBean;
@@ -26,14 +27,12 @@ public class AgenceEjb {
 
     public AgenceEjb() { /* Nothing to do here */ }
 
-//    public Agence addAgence() {
-//
-//    }
+    public boolean addAgence(String name, BackLog backLog) {
+        return Utils.persistOrFail(em, new Agence(name, backLog));
+    }
 
-    public Agence addAgence(BackLog b) {
-        Agence c = new Agence(b);
-        em.persist(c);
-        return c;
+    public boolean addAgence(Agence a) {
+        return Utils.persistOrFail(em, a);
     }
 
 }
