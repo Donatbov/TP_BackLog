@@ -26,6 +26,10 @@ public class AgenceEjb {
 
     public AgenceEjb() { /* Nothing to do here */ }
 
+//    public Agence addAgence() {
+//
+//    }
+
     public Agence addAgence(BackLog b) {
         Agence c = new Agence(b);
         em.persist(c);
