@@ -16,6 +16,8 @@ public class Entree {
     private String description;
     @OneToMany
     private List<Commentaire> comment;
+    @ManyToOne
+    private Colonne column;
 
     public long getId() {
         return id;
@@ -71,6 +73,14 @@ public class Entree {
 
     public void setComment(List<Commentaire> comment) {
         this.comment = comment;
+    }
+
+    public Colonne getColumn() {
+        return column;
+    }
+
+    public void setColumn(Colonne column) {
+        this.column = column;
     }
 
     public Entree() {}
