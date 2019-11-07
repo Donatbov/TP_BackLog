@@ -12,11 +12,11 @@ import java.util.List;
 
 @Stateless
 @LocalBean
-public class BackLogEjb {
+public class BackLogEJB {
     @PersistenceContext
     private EntityManager em;
 
-    public BackLogEjb() { /* Nothing to do here */ }
+    public BackLogEJB() { /* Nothing to do here */ }
 
     public BackLog addBacklog(BackLog b) {
         return Utils.persistOrFail(em, b);

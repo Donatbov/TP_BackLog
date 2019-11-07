@@ -21,11 +21,11 @@ import javax.persistence.PersistenceContext;
 
 @Stateless
 @LocalBean
-public class AgenceEjb {
+public class AgenceEJB {
     @PersistenceContext
     private EntityManager em;
 
-    public AgenceEjb() { /* Nothing to do here */ }
+    public AgenceEJB() { /* Nothing to do here */ }
 
     public Agence addAgence(String name, BackLog backLog) {
         return Utils.persistOrFail(em, new Agence(name, backLog));
