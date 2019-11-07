@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
-
-    <persistence-unit name="NewPersistenceUnit"/>
+    <persistence-unit name="AgenceEJB">
+        <jta-data-source>java:app/env/jdbc/MyDataSource</jta-data-source>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <shared-cache-mode>DISABLE_SELECTIVE</shared-cache-mode>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties>
+    </persistence-unit>
 </persistence>
