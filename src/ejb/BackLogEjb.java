@@ -18,11 +18,11 @@ public class BackLogEjb {
 
     public BackLogEjb() { /* Nothing to do here */ }
 
-    public boolean addBacklog(BackLog b) {
+    public BackLog addBacklog(BackLog b) {
         return Utils.persistOrFail(em, b);
     }
 
-    public boolean addBacklog(List<Entree> listeEntree) {
+    public BackLog addBacklog(List<Entree> listeEntree) {
         return Utils.persistOrFail(em, new BackLog(listeEntree));
     }
 

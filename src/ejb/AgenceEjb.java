@@ -27,11 +27,11 @@ public class AgenceEjb {
 
     public AgenceEjb() { /* Nothing to do here */ }
 
-    public boolean addAgence(String name, BackLog backLog) {
+    public Agence addAgence(String name, BackLog backLog) {
         return Utils.persistOrFail(em, new Agence(name, backLog));
     }
 
-    public boolean addAgence(Agence a) {
+    public Agence addAgence(Agence a) {
         return Utils.persistOrFail(em, a);
     }
 
