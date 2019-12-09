@@ -1,10 +1,11 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Commentaire {
+public class Commentaire implements Serializable {
     @Id @GeneratedValue
     private long id;
     private String content;

@@ -1,16 +1,20 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Agence {
+public class Agence implements Serializable {
     @Id @GeneratedValue
     private long id;
+
     private String name;
     @OneToOne
     private BackLog backlog;
 
-    public Agence() {}
+    public Agence() {
+        this.backlog = new BackLog();
+    }
 
     public Agence(String name, BackLog b) {
         this.name = name;

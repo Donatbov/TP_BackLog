@@ -1,16 +1,20 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class BackLog {
+public class BackLog implements Serializable {
     @Id @GeneratedValue
     private long id;
     @OneToMany
     private List<Entree> listeEntree;
 
-    public BackLog() {}
+    public BackLog() {
+        this.listeEntree = new ArrayList<>();
+    }
 
     public BackLog(List<Entree> listeEntree) {
         this.listeEntree = listeEntree;

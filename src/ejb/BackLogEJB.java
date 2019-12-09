@@ -4,14 +4,14 @@ import model.BackLog;
 import model.Entree;
 import utils.Utils;
 
-import javax.ejb.LocalBean;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
-@LocalBean
+@Remote
 public class BackLogEJB {
     @PersistenceContext
     private EntityManager em;
