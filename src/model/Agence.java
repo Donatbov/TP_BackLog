@@ -9,7 +9,7 @@ public class Agence implements Serializable {
     private long id;
 
     private String name;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private BackLog backlog;
 
     public Agence() {

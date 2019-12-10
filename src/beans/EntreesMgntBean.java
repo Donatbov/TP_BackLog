@@ -10,14 +10,14 @@ import java.io.Serializable;
 
 @Named
 @RequestScoped
-public class AgenceMgntBean implements Serializable {
+public class EntreesMgntBean implements Serializable {
     @EJB
     protected AgenceEJB agenceEJB;
     private Agence agences;
 
-    public AgenceMgntBean() {
+    public EntreesMgntBean() {
         agences = new Agence();
-}
+    }
 
     public Agence addAgence() {
         return agenceEJB.addAgence(agences);
