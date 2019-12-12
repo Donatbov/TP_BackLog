@@ -16,13 +16,13 @@ import java.util.List;
 
 @Named
 @RequestScoped
-public class AgenceMgntBean implements Serializable {
+public class AgencesListMgntBean implements Serializable {
     @EJB
     protected AgencesListEJB agenceListEJB;
     private AgencesList agences;
     private String name;
 
-    public AgenceMgntBean() {
+    public AgencesListMgntBean() {
         this.name = "";
     }
 
