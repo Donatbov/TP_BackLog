@@ -18,31 +18,21 @@ public class AgencesListEJB {
     public AgencesListEJB() { /* Nothing to do here */ }
 
     public AgencesList getListAgence() {
-        try {
-            System.out.println("test2");
-            AgencesList al = em.find(AgencesList.class, 0L);
-            if (al == null) {
-                System.out.println("qzeifjreoigpjoqz^jo");
-                return Utils.persistOrFail(em, new AgencesList());
-            } else {
-                return al;
-            }
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
+        AgencesList al = em.find(AgencesList.class, 0L);
+        if (al == null) {
             return Utils.persistOrFail(em, new AgencesList());
+        } else {
+            return al;
         }
     }
 
     public Agence addAgence(Agence a) {
         AgencesList al = em.find(AgencesList.class, 0L);
         if (al == null) {
-            System.out.println("qzeifjreoigpjoqz^jo");
-            al = Utils.persistOrFail(em, new AgencesList());
+            al = new AgencesList();
         }
-        // al cannot be null at this point
         al.addAgence(a);
-        em.merge(al);
+        Utils.persistOrFail(em, al);
         return a;
     }
 

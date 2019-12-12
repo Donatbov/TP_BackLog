@@ -6,6 +6,7 @@ import model.Agence;
 import model.AgencesList;
 import model.BackLog;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -22,14 +23,12 @@ public class AgenceMgntBean implements Serializable {
     private String name;
 
     public AgenceMgntBean() {
-        System.out.println("test1");
-        try {
-            this.agences = agenceListEJB.getListAgence();
-        }
-        catch(Exception e) {
-            System.out.println(e.getMessage()); 
-        }
         this.name = "";
+    }
+
+    @PostConstruct
+    public void initAgences() {
+        this.agences = agenceListEJB.getListAgence();
     }
 
     public Agence addAgence() {

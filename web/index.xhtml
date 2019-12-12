@@ -10,17 +10,17 @@
 <h:form>
     <h:inputText value="#{agenceMgntBean.name}" p:type="string" required="true"/>
     <h:commandButton  value="ajouter agence"  actionListener="#{agenceMgntBean.addAgence}"/>
-
+    <p>Si l'agence ajoutée n'est pas affichée, rafraîchissez la page.</p>
 </h:form>
-<h:dataTable value="#{agenceMgntBean.agences}" var="agence" cellspacing="4">
+
+<h:dataTable value="#{agenceMgntBean.agences.agences}" var="agence" cellspacing="4">
     <h:column >
         <f:facet name="header" >
             <h:outputText value="Nom de l'agence" />
         </f:facet>
-        <h:outputText value="#{agence.name}" />
+        <h:outputText value="#{agence.name}"  />
     </h:column>
 </h:dataTable>
-
 
 </body>
 </html>
