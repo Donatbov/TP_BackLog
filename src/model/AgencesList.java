@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 // Va contenir la liste des agences créés
@@ -12,6 +13,10 @@ public class AgencesList implements Serializable {
 
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Agence> agences;
+
+    public AgencesList() {
+        agences  = new ArrayList<>();
+    }
 
     public List<Agence> getAgences() {
         return agences;

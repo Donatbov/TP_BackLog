@@ -23,7 +23,12 @@ public class AgenceMgntBean implements Serializable {
 
     public AgenceMgntBean() {
         System.out.println("test1");
-        this.agences = agenceListEJB.getListAgence();
+        try {
+            this.agences = agenceListEJB.getListAgence();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage()); 
+        }
         this.name = "";
     }
 
