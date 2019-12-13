@@ -18,7 +18,13 @@
         <f:facet name="header" >
             <h:outputText value="Nom de l'agence" />
         </f:facet>
-        <h:outputText value="#{agence.name}"  />
+        <h:form>
+            <h:outputLink
+                    action="agenceView"
+                    value="#{agence.name}"
+                    actionListener="#{backlogAgenceMgntBean.setAgence(agence)}"
+            />
+        </h:form>
     </h:column>
 </h:dataTable>
 

@@ -13,26 +13,16 @@ import java.io.Serializable;
 public class BacklogAgenceMgntBean implements Serializable {
     @EJB
     protected AgenceEJB agenceEJB;
-    private Agence agences;
+    private Agence agence;
 
-    public BacklogAgenceMgntBean() {
-        agences = new Agence();
+    public BacklogAgenceMgntBean() {}
+
+    public Agence getAgence() {
+        return agence;
     }
 
-    public Agence addAgence() {
-        return agenceEJB.addAgence(agences);
-    }
-
-    public void deleteAgence(long id) {
-        agenceEJB.deleteAgence(id);
-    }
-
-    public Agence getAgences() {
-        return agences;
-    }
-
-    public void setAgences(Agence agences) {
-        this.agences = agences;
+    public void setAgence(Agence agence) {
+        this.agence = agence;
     }
 
 //    public ArrayList<Agence> getAgences() {
