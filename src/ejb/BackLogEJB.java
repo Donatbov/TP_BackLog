@@ -1,6 +1,7 @@
 package ejb;
 
 import model.BackLog;
+import model.Colonne;
 import model.Entree;
 import utils.Utils;
 
@@ -22,8 +23,17 @@ public class BackLogEJB {
         return Utils.persistOrFail(em, b);
     }
 
-    public BackLog addBacklog(List<Entree> listeEntree) {
-        return Utils.persistOrFail(em, new BackLog(listeEntree));
+    public BackLog addBacklog(List<Colonne> listeColonne) {
+        return Utils.persistOrFail(em, new BackLog(listeColonne));
     }
 
+    public void addColonne(BackLog backlog, String columnName) {
+        backlog.addColonne(columnName);
+        em.merge(backlog);
+    }
+
+    public void addColonne(BackLog backlog, String columnName, Colonne prev, Colonne next) {
+        backlog.addColonne(columnName, prev, next);
+        em.merge(backlog);
+    }
 }

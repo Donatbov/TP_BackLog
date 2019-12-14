@@ -1,6 +1,7 @@
 package beans;
 
 import ejb.AgenceEJB;
+import ejb.BackLogEJB;
 import model.Agence;
 
 import javax.ejb.EJB;
@@ -13,7 +14,11 @@ import java.io.Serializable;
 public class BacklogAgenceMgntBean implements Serializable {
     @EJB
     protected AgenceEJB agenceEJB;
+    @EJB
+    protected BackLogEJB backLogEJB;
+
     private Agence agence;
+    private String columnName;
 
     public BacklogAgenceMgntBean() {}
 
@@ -25,7 +30,15 @@ public class BacklogAgenceMgntBean implements Serializable {
         this.agence = agence;
     }
 
-//    public ArrayList<Agence> getAgences() {
-//
-//    }
+    public String getColumnName() {
+        return columnName;
+    }
+
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
+    }
+
+    public void addColumn() {
+        backLogEJB.addColonne(this.agence.getBacklog(), this.columnName);
+    }
 }
