@@ -19,7 +19,7 @@
             <h:outputText value="Nom de l'agence" />
         </f:facet>
         <h:form>
-            <h:outputLink
+            <h:commandLink
                     action="agenceView"
                     value="#{agence.name}"
                     actionListener="#{backlogAgenceMgntBean.setAgence(agence)}"
