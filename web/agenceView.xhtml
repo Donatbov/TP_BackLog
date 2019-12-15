@@ -5,8 +5,31 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
-<h:head>Agence</h:head>
+<h:head>
+    <title><h:outputText value="#{backlogAgenceMgntBean.agence.name}"/> - Backlog</title>
+    <link rel="stylesheet" href="style.css"/>
+</h:head>
 <body>
-    <h:outputText value="#{backlogAgenceMgntBean.agence.name}"/>
+    <h1>Backlog de <h:outputText value="#{backlogAgenceMgntBean.agence.name}"/></h1>
+    <!-- TODO : Entries in columns should be sorted by priority -->
+    <div class="backlog">
+
+        <h:dataTable value="#{backlogAgenceMgntBean.agence.backlog.listeColonne}" var="col" cellspacing="4">
+            <h:column>
+                <div class="col">
+                    <h:outputText value="#{col.nom}" />
+                </div>
+            </h:column>
+        </h:dataTable>
+        <div class="col">
+            <h:form>
+                <p>Ajouter une colonne</p>
+                <h:inputText value="#{backlogAgenceMgntBean.columnName}"
+                             p:type="string" required="true" p:placeholder="Nom de la colonne"/>
+                <h:commandButton  value="ajouter colonne"  actionListener="#{backlogAgenceMgntBean.addColumn}"/>
+                <p>Si la colonne ajoutée n'apparait pas, rafraîchissez la page.</p>
+            </h:form>
+        </div>
+    </div>
 </body>
 </html>

@@ -22,7 +22,7 @@
             <h:commandLink
                     action="agenceView"
                     value="#{agence.name}"
-                    actionListener="#{backlogAgenceMgntBean.setAgence(agence)}"
+                    actionListener="#{agencesListMgntBean.putAgenceInSessionScope(agence)}"
             />
         </h:form>
     </h:column>

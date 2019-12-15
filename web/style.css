@@ -1,0 +1,13 @@
+.backlog {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.col {
+    display: grid;
+    grid-template-columns: 270px;
+    padding: 10px;
+    margin: 1px;
+    background-color: rgba(111,41,97,.3);
+    border: 2px solid rgba(111,41,97,.5);
+}

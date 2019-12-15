@@ -4,13 +4,15 @@ import ejb.AgenceEJB;
 import ejb.BackLogEJB;
 import model.Agence;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class BacklogAgenceMgntBean implements Serializable {
     @EJB
     protected AgenceEJB agenceEJB;
@@ -21,6 +23,14 @@ public class BacklogAgenceMgntBean implements Serializable {
     private String columnName;
 
     public BacklogAgenceMgntBean() {}
+
+    /**
+     * Get the Agence instance from the session
+     */
+    @PostConstruct
+    protected void initAgence() {
+        this.agence = (Agence) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("agence");
+    }
 
     public Agence getAgence() {
         return agence;
