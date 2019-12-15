@@ -9,7 +9,6 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 @Stateless
 @Remote
@@ -23,17 +22,12 @@ public class BackLogEJB {
         return Utils.persistOrFail(em, b);
     }
 
-    public BackLog addBacklog(List<Colonne> listeColonne) {
-        return Utils.persistOrFail(em, new BackLog(listeColonne));
+    public BackLog addBacklog(Colonne firstColonne) {
+        return Utils.persistOrFail(em, new BackLog(firstColonne));
     }
 
-    public void addColonne(BackLog backlog, String columnName) {
-        backlog.addColonne(columnName);
-        em.merge(backlog);
-    }
-
-    public void addColonne(BackLog backlog, String columnName, Colonne prev, Colonne next) {
-        backlog.addColonne(columnName, prev, next);
-        em.merge(backlog);
+    public void setFirstColonne(BackLog b, Colonne c) {
+        b.setFirstColonne(c);
+        em.merge(b);
     }
 }

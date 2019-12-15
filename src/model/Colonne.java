@@ -50,8 +50,8 @@ public class Colonne implements Serializable {
         return previousColumn;
     }
 
-    public void setPreviousColumn(Colonne lastColumn) {
-        this.previousColumn = lastColumn;
+    public void setPreviousColumn(Colonne previousColumn) {
+        this.previousColumn = previousColumn;
     }
 
     public Colonne getNextColumn() {

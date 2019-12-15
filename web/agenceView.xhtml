@@ -15,7 +15,7 @@
     <!-- TODO : Entries in columns should be sorted by priority -->
     <div class="backlog">
 
-        <c:forEach items="#{backlogAgenceMgntBean.agence.backlog.listeColonne}" var="col">
+        <c:forEach items="#{backlogAgenceMgntBean.colonnes}" var="col">
             <div class="col">
                 <h:outputText value="#{col.nom}" />
             </div>
@@ -23,9 +23,9 @@
         <div class="col">
             <h:form>
                 <p>Ajouter une colonne</p>
-                <h:inputText value="#{backlogAgenceMgntBean.columnName}"
+                <h:inputText value="#{backlogAgenceMgntBean.colonneName}"
                              p:type="string" required="true" p:placeholder="Nom de la colonne"/>
-                <h:commandButton  value="ajouter colonne"  actionListener="#{backlogAgenceMgntBean.addColumn}"/>
+                <h:commandButton  value="ajouter colonne"  actionListener="#{backlogAgenceMgntBean.addColonne}"/>
                 <p>Si la colonne ajoutée n'apparait pas, rafraîchissez la page.</p>
             </h:form>
         </div>
