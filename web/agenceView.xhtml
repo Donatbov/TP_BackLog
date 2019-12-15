@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
     <title><h:outputText value="#{backlogAgenceMgntBean.agence.name}"/> - Backlog</title>
@@ -14,13 +15,11 @@
     <!-- TODO : Entries in columns should be sorted by priority -->
     <div class="backlog">
 
-        <h:dataTable value="#{backlogAgenceMgntBean.agence.backlog.listeColonne}" var="col" cellspacing="4">
-            <h:column>
-                <div class="col">
-                    <h:outputText value="#{col.nom}" />
-                </div>
-            </h:column>
-        </h:dataTable>
+        <c:forEach items="#{backlogAgenceMgntBean.agence.backlog.listeColonne}" var="col">
+            <div class="col">
+                <h:outputText value="#{col.nom}" />
+            </div>
+        </c:forEach>
         <div class="col">
             <h:form>
                 <p>Ajouter une colonne</p>
