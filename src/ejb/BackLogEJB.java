@@ -2,7 +2,6 @@ package ejb;
 
 import model.BackLog;
 import model.Colonne;
-import model.Entree;
 import utils.Utils;
 
 import javax.ejb.Remote;

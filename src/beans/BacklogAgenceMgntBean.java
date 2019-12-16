@@ -74,15 +74,14 @@ public class BacklogAgenceMgntBean implements Serializable {
 
     public void addColonne() {
         Colonne col = new Colonne();
+        col.setNom(this.colonneName);
         int colonnnesSize = this.colonnes.size();
         if(colonnnesSize > 0) {
-            // TODO : resolve this case
-            //java.lang.IllegalStateException: During synchronization a new object was found through a relationship
-            // that was not marked cascade PERSIST: model.Colonne@36511c64.
+            this.colonneEJB.addColonne(col);
             Colonne prevCol = this.colonnes.get(colonnnesSize - 1);
             prevCol.setNextColumn(col);
             col.setPreviousColumn(prevCol);
-            this.colonneEJB.addColonne(col);
+            this.colonneEJB.updateColonne(col);
             this.colonneEJB.updateColonne(prevCol);
         }
         else {
