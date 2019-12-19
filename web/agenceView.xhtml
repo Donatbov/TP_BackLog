@@ -17,6 +17,12 @@
 
         <c:forEach items="#{backlogAgenceMgntBean.colonnes}" var="col">
             <div class="col">
+                <h:form>
+                    <h:commandButton  value="toLeft"  actionListener="#{backlogAgenceMgntBean.moveColonneLeft(col)}"/>
+                </h:form>
+                <h:form>
+                    <h:commandButton  value="toRight"  actionListener="#{backlogAgenceMgntBean.moveColonneRight(col)}"/>
+                </h:form>
                 <h:outputText value="#{col.nom}" />
             </div>
         </c:forEach>

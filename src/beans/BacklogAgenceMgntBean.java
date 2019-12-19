@@ -1,10 +1,8 @@
 package beans;
 
-import ejb.AgenceEJB;
 import ejb.BackLogEJB;
 import ejb.ColonneEJB;
 import model.Agence;
-import model.BackLog;
 import model.Colonne;
 
 import javax.annotation.PostConstruct;
@@ -87,5 +85,54 @@ public class BacklogAgenceMgntBean implements Serializable {
         else {
             this.backLogEJB.setFirstColonne(this.agence.getBacklog(), col);
         }
+    }
+
+    // TODO : un truc avec this.backLogEJB.setFirstColonne(this.agence.getBacklog(), ...);
+    // -> Le problème c'est que quand on met vers la droite la colonne tout à gauche, celle de sa droite
+    // disparait !
+    public void moveColonneRight(Colonne c) {
+        Colonne right = c.getNextColumn();
+        if (right != null) {
+            Colonne rightAfter = right.getNextColumn();
+            Colonne left = c.getPreviousColumn();
+            if(rightAfter != null) {
+                if (left != null) {
+                    left.setNextColumn(right);
+                    c.setPreviousColumn(right);
+                    c.setNextColumn(rightAfter);
+                    right.setPreviousColumn(left);
+                    this.colonneEJB.updateColonne(left);
+                }
+                else {
+                    c.setPreviousColumn(right);
+                    c.setNextColumn(rightAfter);
+                    right.setPreviousColumn(null);
+                }
+                right.setNextColumn(c);
+                rightAfter.setPreviousColumn(c);
+                this.colonneEJB.updateColonne(rightAfter);
+            }
+            else {
+                if (left != null) {
+                    left.setNextColumn(right);
+                    c.setPreviousColumn(right);
+                    c.setNextColumn(null);
+                    right.setPreviousColumn(left);
+                    this.colonneEJB.updateColonne(left);
+                }
+                else {
+                    c.setPreviousColumn(right);
+                    c.setNextColumn(null);
+                    right.setPreviousColumn(null);
+                }
+                right.setNextColumn(c);
+            }
+        }
+        this.colonneEJB.updateColonne(c);
+        this.colonneEJB.updateColonne(right);
+    }
+
+    public void moveColonneLeft(Colonne c) {
+
     }
 }
