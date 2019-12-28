@@ -54,7 +54,7 @@
             <h:form>
                 <p>Ajouter une colonne</p>
                 <h:inputText value="#{backlogAgenceMgntBean.colonneName}"
-                             p:type="string" required="true" p:placeholder="Nom de la colonne"/>
+                             p:type="string" p:required="true" p:placeholder="Nom de la colonne"/>
                 <h:commandButton  value="ajouter colonne"  actionListener="#{backlogAgenceMgntBean.addColonne}"/>
                 <p>Si la colonne ajoutée n'apparait pas, rafraîchissez la page.</p>
             </h:form>

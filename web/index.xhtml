@@ -8,7 +8,7 @@
 <h:head>TP_BackLog</h:head>
 <body>
 <h:form>
-    <h:inputText value="#{agencesListMgntBean.name}" p:type="string" required="true"/>
+    <h:inputText value="#{agencesListMgntBean.name}" p:type="string" p:required="true"/>
     <h:commandButton  value="ajouter agence"  actionListener="#{agencesListMgntBean.addAgence}"/>
     <p>Si l'agence ajoutée n'est pas affichée, rafraîchissez la page.</p>
 </h:form>
