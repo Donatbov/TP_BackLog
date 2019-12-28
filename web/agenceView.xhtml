@@ -15,13 +15,13 @@
     <!-- TODO : Entries in columns should be sorted by priority -->
     <div class="backlog">
 
-        <c:forEach items="#{backlogAgenceMgntBean.colonnes}" var="col">
+        <c:forEach items="#{backlogAgenceMgntBean.colonnes}" var="col" varStatus="status">
             <div class="col">
                 <h:form>
-                    <h:commandButton  value="toLeft"  actionListener="#{backlogAgenceMgntBean.moveColonneLeft(col)}"/>
+                    <h:commandButton  value="toLeft"  actionListener="#{backlogAgenceMgntBean.moveColonneLeft(col)}" rendered="#{!status.first}"/>
                 </h:form>
                 <h:form>
-                    <h:commandButton  value="toRight"  actionListener="#{backlogAgenceMgntBean.moveColonneRight(col)}"/>
+                    <h:commandButton  value="toRight"  actionListener="#{backlogAgenceMgntBean.moveColonneRight(col)}" rendered="#{!status.last}" />
                 </h:form>
                 <h:outputText value="#{col.nom}" />
             </div>
