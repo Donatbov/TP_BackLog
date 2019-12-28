@@ -8,6 +8,13 @@
     grid-template-columns: 270px;
     padding: 10px;
     margin: 1px;
-    background-color: rgba(111,41,97,.3);
-    border: 2px solid rgba(111,41,97,.5);
+    background-color: rgba(111, 41, 97, 0.3);
+    border: 2px solid rgba(111, 41, 97, 0.5);
+}
+
+.entry {
+    padding: 5px;
+    margin: 1px;
+    background-color: aquamarine;
+    border: 2px solid mediumaquamarine;
 }

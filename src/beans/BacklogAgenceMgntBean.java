@@ -4,6 +4,7 @@ import ejb.BackLogEJB;
 import ejb.ColonneEJB;
 import model.Agence;
 import model.Colonne;
+import model.Entree;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -25,6 +26,11 @@ public class BacklogAgenceMgntBean implements Serializable {
     private Agence agence;
     private List<Colonne> colonnes;
     private String colonneName;
+    private String entreeName;
+    private int entreePrio;
+    private int entreeEstim;
+    private String entreeDescr;
+
 
     public BacklogAgenceMgntBean() {}
 
@@ -70,6 +76,38 @@ public class BacklogAgenceMgntBean implements Serializable {
         this.colonneName = colonneName;
     }
 
+    public String getEntreeName() {
+        return entreeName;
+    }
+
+    public void setEntreeName(String entreeName) {
+        this.entreeName = entreeName;
+    }
+
+    public int getEntreePrio() {
+        return entreePrio;
+    }
+
+    public void setEntreePrio(int entreePrio) {
+        this.entreePrio = entreePrio;
+    }
+
+    public int getEntreeEstim() {
+        return entreeEstim;
+    }
+
+    public void setEntreeEstim(int entreeEstim) {
+        this.entreeEstim = entreeEstim;
+    }
+
+    public String getEntreeDescr() {
+        return entreeDescr;
+    }
+
+    public void setEntreeDescr(String entreeDescr) {
+        this.entreeDescr = entreeDescr;
+    }
+
     public void addColonne() {
         Colonne col = new Colonne();
         col.setNom(this.colonneName);
@@ -102,4 +140,15 @@ public class BacklogAgenceMgntBean implements Serializable {
             this.backLogEJB.setFirstColonne(this.agence.getBacklog(), first);
         }
     }
+
+    public void addEntree(Colonne c) {
+        Entree e = new Entree();
+        e.setName(this.entreeName);
+        e.setColumn(c);
+        e.setDescription(this.entreeDescr);
+        e.setEstimation(this.entreeEstim);
+        e.setPriority(this.entreePrio);
+        colonneEJB.addEntree(c, e);
+    }
+
 }

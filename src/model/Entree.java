@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,9 +17,14 @@ public class Entree implements Serializable {
     private int estimation;
     private String description;
     @OneToMany
-    private List<Commentaire> comment;
+    private List<Commentaire> comments;
     @ManyToOne
     private Colonne column;
+
+    public Entree() {
+        this.comments = new ArrayList<>();
+        this.creationDate = new Date(System.currentTimeMillis());
+    }
 
     public long getId() {
         return id;
@@ -38,10 +44,6 @@ public class Entree implements Serializable {
 
     public Date getCreationDate() {
         return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
     }
 
     public int getPriority() {
@@ -68,12 +70,12 @@ public class Entree implements Serializable {
         this.description = description;
     }
 
-    public List<Commentaire> getComment() {
-        return comment;
+    public List<Commentaire> getComments() {
+        return comments;
     }
 
-    public void setComment(List<Commentaire> comment) {
-        this.comment = comment;
+    public void addComment(Commentaire comment) {
+        this.comments.add(comment);
     }
 
     public Colonne getColumn() {
@@ -83,6 +85,4 @@ public class Entree implements Serializable {
     public void setColumn(Colonne column) {
         this.column = column;
     }
-
-    public Entree() {}
 }
