@@ -30,13 +30,13 @@
                         <h:inputText value="#{backlogAgenceMgntBean.entreeName}"
                                      p:type="string" p:required="true" p:placeholder="Nom de l'entrée"/>
                         <br/>
-                        <h:outputLabel p:for="estim">Estimation : </h:outputLabel>
-                        <h:inputText value="#{backlogAgenceMgntBean.entreeEstim}" p:name="estim"
-                                     p:type="number" p:required="true" p:min="0" p:style="width:30px"/>
+                        <h:outputLabel>Estimation : </h:outputLabel>
+                        <h:inputText value="#{backlogAgenceMgntBean.entreeEstim}" p:type="number"
+                                      p:required="true" p:min="0" p:style="width:30px"/>
                         <br/>
-                        <h:outputLabel p:for="prio">Priorité : </h:outputLabel>
-                        <h:inputText value="#{backlogAgenceMgntBean.entreePrio}" p:name="prio"
-                                     p:type="number" p:required="true" p:min="0" p:style="width:30px"/>
+                        <h:outputLabel>Priorité : </h:outputLabel>
+                        <h:inputText value="#{backlogAgenceMgntBean.entreePrio}" p:type="number"
+                                      p:required="true" p:min="0" p:style="width:30px"/>
                         <h:inputText value="#{backlogAgenceMgntBean.entreeDescr}"
                                      p:type="string" p:required="true" p:placeholder="Description de l'entrée"/>
                         <h:commandButton  value="ajouter entrée"  actionListener="#{backlogAgenceMgntBean.addEntree(col)}"/>
@@ -46,6 +46,17 @@
                 <c:forEach items="#{col.listeEntree}" var="ent" varStatus="status">
                     <div class="entry">
                         <h:outputText value="#{ent.name}" />
+                        <p>Créé le </p>
+                        <h:outputText value="#{ent.creationDate}">
+                            <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                        </h:outputText>
+                        <p>Estimation : </p>
+                        <h:outputText value="#{ent.estimation}" />
+                        <p>Priorité : </p>
+                        <h:outputText value="#{ent.priority}" />
+                        <p>Description : </p>
+                        <h:outputText value="#{ent.description}" />
+<!--                        <h:outputText value="#{ent.comments}" />-->
                     </div>
                 </c:forEach>
             </div>
