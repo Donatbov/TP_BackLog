@@ -19,10 +19,12 @@
             <div class="col">
                 <h:outputText value="#{col.nom}" />
                 <h:form>
-                    <h:commandButton  value="toLeft"  actionListener="#{backlogAgenceMgntBean.moveColonneLeft(col)}" rendered="#{!status.first}"/>
+                    <h:commandButton  value="&lt;-" p:title="Déplacer vers la gauche"
+                                      actionListener="#{backlogAgenceMgntBean.moveColonneLeft(col)}" rendered="#{!status.first}"/>
                 </h:form>
                 <h:form>
-                    <h:commandButton  value="toRight"  actionListener="#{backlogAgenceMgntBean.moveColonneRight(col)}" rendered="#{!status.last}" />
+                    <h:commandButton  value="-&gt;" p:title="Déplacer vers la droite"
+                                      actionListener="#{backlogAgenceMgntBean.moveColonneRight(col)}" rendered="#{!status.last}" />
                 </h:form>
                 <div class="entry">
                     <p>Ajouter une entrée</p>
